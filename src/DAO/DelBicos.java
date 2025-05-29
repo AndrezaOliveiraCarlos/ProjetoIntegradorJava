@@ -25,10 +25,15 @@ public class DelBicos {
      Connection con;
     public Connection delbicosDB(){
         JOptionPane.showMessageDialog(null, "Inicia a classe para conexão com SQL SERVER!");
-        String caminho = "jdbc:sqlserver://DESKTOP-09C4FSJ;databaseName=DelBicos;"
+       /* String caminho = "jdbc:sqlserver://DESKTOP-09C4FSJ;databaseName=DelBicos;"
                 + "encrypt=true;trustServerCertificate=true;"; 
         String usuario = "sa";
-        String senha = ".";
+        String senha = ".";*/
+        
+         String caminho = "jdbc:sqlserver://localhost:1433;databaseName=MOV_CONTA_CORRENTE_ODIN;"
+                 + "integratedSecurity=true,encrypt=trueServerCertificate=true;";
+        String usuario = "";
+        String senha = "";
         
         try {
             con = DriverManager.getConnection(caminho);
