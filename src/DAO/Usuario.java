@@ -13,6 +13,7 @@ public class Usuario {
     private String Email;
     private String Telefone;
     private String Senha;
+    private boolean active;
  
     public Usuario(){ 
 }
@@ -48,22 +49,33 @@ public class Usuario {
     public void setSenha(String Senha) {
         this.Senha = Senha;
     }
+    public boolean getactive() {
+        return active;
+    }
+
+     public boolean isActive() {
+        return active;
+    }
+     public void setActive(boolean active) {
+        this.active = active;
+    }
     
     public String dadosSQLValues(){
         String dadosUsuarios;
-        dadosUsuarios = " "
+        dadosUsuarios = " ' "
         + this.getNome() + "','"
         + this.getEmail() + "','"
         + this.getTelefone() + "','"
-        + this.getSenha() + "','";
+        + this.getSenha() + "',"
+       +  (this.isActive() ? "1" : "0");
         return dadosUsuarios;
     }
     
     public String alterarDadosSQLValues(){
-        String dadosUsuarios = "nome ='"
+        String dadosUsuarios = "username ='"
         +this.getNome() + "', =email'"
-        +this.getEmail() +"', =telefone'"
-        +this.getTelefone() +"', =senha'"
+        +this.getEmail() +"', =phone'"
+        +this.getTelefone() +"', =password'"
         +this.getSenha();
         return dadosUsuarios;
     }

@@ -17,26 +17,28 @@ import javax.swing.JOptionPane;
  *
  * @author guilh
  */
-public class DelBicos {
+public class ConnectDAO {
 
     /**
      * @param args the command line arguments
      */
      Connection con;
-    public Connection delbicosDB(){
-        JOptionPane.showMessageDialog(null, "Inicia a classe para conexão com SQL SERVER!");
-       /* String caminho = "jdbc:sqlserver://DESKTOP-09C4FSJ;databaseName=DelBicos;"
+    public Connection connectDB(){
+       /* JOptionPane.showMessageDialog(null, "Inicia a classe para conexão com SQL SERVER!");
+        String caminho = "jdbc:sqlserver://DESKTOP-09C4FSJ;databaseName=MOV_CONTA_CORRENTE;"
                 + "encrypt=true;trustServerCertificate=true;"; 
-        String usuario = "sa";
-        String senha = ".";*/
+        String usuario="sa";
+        String senha=".";*/
         
-         String caminho = "jdbc:sqlserver://localhost:1433;databaseName=MOV_CONTA_CORRENTE_ODIN;"
-                 + "integratedSecurity=true,encrypt=trueServerCertificate=true;";
-        String usuario = "";
-        String senha = "";
+         JOptionPane.showMessageDialog(null, "Inicia a classe para conexão com SQL SERVER!");
+        String caminho = "jdbc:sqlserver://localhost:1433;databaseName=Delbicos;"
+                + "encrypt=true;trustServerCertificate=true;";        
+
         
+                String usuario="sa";
+                String senha=".";//"S@outubro10";     
         try {
-            con = DriverManager.getConnection(caminho);
+            con = DriverManager.getConnection(caminho, usuario, senha);
             JOptionPane.showMessageDialog(null, "Conectado com sucesso!");
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
@@ -47,7 +49,7 @@ public class DelBicos {
     
 }
     public void insereCadastroJFBD(String tabela, String strDados) {
-    con = delbicosDB();
+    con = connectDB();
     Statement stmt;
     try{
         stmt = con.createStatement();
@@ -64,8 +66,9 @@ public class DelBicos {
         }
     }
 catch (Exception ex) {
-     Logger.getLogger(DelBicos.class.getName()).log(Level.SEVERE, null,ex);
+     Logger.getLogger(ConnectDAO.class.getName()).log(Level.SEVERE, null,ex);
 }
     
 } 
+   
 }

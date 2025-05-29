@@ -4,7 +4,7 @@
  */
 package VIEW;
 import DAO.Usuario;
-import DAO.DelBicos;
+import DAO.ConnectDAO;
 import java.util.Set;
 
 /**
@@ -40,6 +40,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         texttelefone = new javax.swing.JTextField();
         textsenha = new javax.swing.JPasswordField();
         buttoncadastrar = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -47,7 +48,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
-        jLabel1.setText("Cadastrar");
+        jLabel1.setText("Usuario");
 
         labelnome.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         labelnome.setText("Nome:");
@@ -68,10 +69,18 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         });
 
         buttoncadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        buttoncadastrar.setText("Cadastrar");
+        buttoncadastrar.setText("Salvar");
         buttoncadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttoncadastrarActionPerformed(evt);
+            }
+        });
+
+        jCheckBox1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jCheckBox1.setText("Ativo");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
             }
         });
 
@@ -82,23 +91,26 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textnome)
-                            .addComponent(textemail)
-                            .addComponent(labelnome)
-                            .addComponent(labelemail)
-                            .addComponent(labeltelefone)
-                            .addComponent(texttelefone)
-                            .addComponent(labelsenha)
-                            .addComponent(textsenha, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(142, 142, 142)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(buttoncadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(70, 70, 70)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(textnome)
+                                .addComponent(textemail)
+                                .addComponent(labelnome)
+                                .addComponent(labelemail)
+                                .addComponent(labeltelefone)
+                                .addComponent(texttelefone)
+                                .addComponent(labelsenha)
+                                .addComponent(textsenha, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)))))
                 .addContainerGap(78, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(buttoncadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,9 +133,11 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                 .addComponent(labelsenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttoncadastrar)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttoncadastrar)
+                    .addComponent(jCheckBox1))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -140,11 +154,11 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         this.cadastroUsuario.setNome(textnome.getText());
         this.cadastroUsuario.setEmail(textemail.getText());
         this.cadastroUsuario.setTelefone(texttelefone.getText());
-        this.cadastroUsuario.setSenha(textsenha.getPassword().toString());
+        this.cadastroUsuario.setSenha(String.valueOf(textsenha.getPassword()));
+        this.cadastroUsuario.setActive(jCheckBox1.isSelected());
+        ConnectDAO objcon = new ConnectDAO ();
         
-        DelBicos objcon = new DelBicos ();
-        
-        objcon.insereCadastroJFBD("Usuarios", cadastroUsuario.dadosSQLValues());
+        objcon.insereCadastroJFBD("users", cadastroUsuario.dadosSQLValues());
         this.textnome.setText("");
         this.textemail.setText("");
         this.texttelefone.setText("");
@@ -153,6 +167,10 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
        // }
         
     }//GEN-LAST:event_buttoncadastrarActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,6 +210,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttoncadastrar;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JLabel labelemail;
