@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/guilh/Desktop/ProjetoIntegrador/DelBicos/src/VIEW/TelaLogin.java</file>
-            <file>file:/C:/Users/guilh/Desktop/ProjetoIntegrador/DelBicos/src/VIEW/TelaMenu.java</file>
-            <file>file:/C:/Users/guilh/Desktop/ProjetoIntegrador/DelBicos/src/DAO/Consulta.java</file>
-            <file>file:/C:/Users/guilh/Desktop/ProjetoIntegrador/DelBicos/src/DAO/Usuario.java</file>
-            <file>file:/C:/Users/guilh/Desktop/ProjetoIntegrador/DelBicos/src/VIEW/TelaConsulta.java</file>
-            <file>file:/C:/Users/guilh/Desktop/ProjetoIntegrador/DelBicos/src/DAO/ConnectDAO.java</file>
+            <file>file:/C:/Users/Alunos/Desktop/3semestre/DelBicos/DelBicos/src/VIEW/TelaLogin.java</file>
+            <file>file:/C:/Users/Alunos/Desktop/3semestre/DelBicos/DelBicos/src/VIEW/TelaCadastroUsuario.java</file>
+            <file>file:/C:/Users/Alunos/Desktop/3semestre/DelBicos/DelBicos/src/VIEW/TelaConsulta.java</file>
+            <file>file:/C:/Users/Alunos/Desktop/3semestre/DelBicos/DelBicos/src/DAO/Consulta.java</file>
         </group>
     </open-files>
 </project-private>
