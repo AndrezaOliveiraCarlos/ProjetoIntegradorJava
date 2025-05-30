@@ -156,9 +156,11 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         this.cadastroUsuario.setTelefone(texttelefone.getText());
         this.cadastroUsuario.setSenha(String.valueOf(textsenha.getPassword()));
         this.cadastroUsuario.setActive(jCheckBox1.isSelected());
-        ConnectDAO objcon = new ConnectDAO ();
         
-        objcon.insereCadastroJFBD("users", cadastroUsuario.dadosSQLValues());
+        ConnectDAO connDAO = new ConnectDAO();
+        connDAO.connectDB();
+        connDAO.insereRegistroJFBD(this.cadastroUsuario);
+        
         this.textnome.setText("");
         this.textemail.setText("");
         this.texttelefone.setText("");
