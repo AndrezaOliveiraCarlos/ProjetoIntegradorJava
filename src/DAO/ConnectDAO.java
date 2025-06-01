@@ -38,7 +38,7 @@ public class ConnectDAO {
 
         
         String usuario="sa";
-        String senha="S@outubro10";
+        String senha="S@outubro10";//"S@outubro10";  
         
         try {
             conn = DriverManager.getConnection(caminho, usuario, senha);

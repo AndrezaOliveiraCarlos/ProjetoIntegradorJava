@@ -11,7 +11,7 @@ import java.util.List;
  * @author guilh
  */
 public class Usuario implements BaseDAO {
-    private String tableName = "user";
+    private String tableName = "users";
     private int userId;
     private String Nome;
     private String Email;
