@@ -4,6 +4,11 @@
  */
 package VIEW;
 
+import DAO.ConnectDAO;
+import DAO.Usuario;
+import java.util.HashSet;
+import java.util.List;
+
 /**
  *
  * @author guilh
@@ -17,6 +22,8 @@ public class TelaConsulta extends javax.swing.JFrame {
         initComponents();
     }
 
+    Usuario consultaUsuario = new Usuario();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,6 +37,7 @@ public class TelaConsulta extends javax.swing.JFrame {
         textusuarios = new javax.swing.JTextField();
         labelusuarios = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(new java.awt.Color(0, 102, 204));
@@ -54,29 +62,29 @@ public class TelaConsulta extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelusuarios)))
-                .addContainerGap(26, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelconsulta)
-                .addGap(112, 112, 112))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelusuarios)
+                    .addComponent(jLabel1)
+                    .addComponent(labelconsulta)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton1)
+                        .addComponent(textusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addContainerGap()
                 .addComponent(labelconsulta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(labelusuarios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         pack();
@@ -84,6 +92,17 @@ public class TelaConsulta extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        this.consultaUsuario.setUserId(Integer.parseInt(textusuarios.getText()));        
+        ConnectDAO objcon = new ConnectDAO ();
+        List<String> resultado =  objcon.consultaRegistroJFBD(this.consultaUsuario);
+        
+        StringBuilder textoFinal = new StringBuilder();
+        
+        for (String linha : resultado) {
+            textoFinal.append(linha).append("\n"); // \n para quebrar linha em cada item
+        }
+        
+        jLabel1.setText("<html>" + textoFinal.toString().replace("\n", "<br>") + "</html>");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -123,6 +142,7 @@ public class TelaConsulta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelconsulta;
     private javax.swing.JLabel labelusuarios;
     private javax.swing.JTextField textusuarios;
