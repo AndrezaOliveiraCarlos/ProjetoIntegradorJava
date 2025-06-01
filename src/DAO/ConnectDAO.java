@@ -33,12 +33,12 @@ public class ConnectDAO {
         String senha=".";*/
         
         JOptionPane.showMessageDialog(null, "Inicia a classe para conexão com SQL SERVER!");
-        String caminho = "jdbc:sqlserver://localhost:1433;databaseName=Delbicos;"
-                + "encrypt=true;trustServerCertificate=true;";        
+        String caminho = "jdbc:sqlserver://DESKTOP-09C4FSJ;databaseName=Delbicos;"
+                + "encrypt=true;trustServerCertificate=true;";         
 
         
         String usuario="sa";
-        String senha=".";//"S@outubro10";  
+        String senha="S@outubro10";
         
         try {
             conn = DriverManager.getConnection(caminho, usuario, senha);
